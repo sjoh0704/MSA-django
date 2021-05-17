@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
-from .models import Content
+from .models import Content, FollowRelation
 
 @method_decorator(login_required, name='dispatch')
 class HomeView(TemplateView):
@@ -22,7 +22,13 @@ class HomeView(TemplateView):
         # context['contents'] = Content.objects.select_related('user').filter(user=user)
         # -> contents의 오브젝트 중에서 user와 관련된 항목들 중에 user=user인 항목들을 필터링하겠다. 
 
-        context['contents'] = Content.objects.select_related('user').prefetch_related('image_set').filter(user=user)
+        followees = FollowRelation.objects.filter(follower=user).values_list('followee__id', flat=True)
+        print(followees)
+        lookup_user_ids = [user.id] + list(followees) # 본인 + 팔로우 한 사람들
+
+        context['contents'] = Content.objects.select_related('user').prefetch_related('image_set').filter(
+            user__id__in = lookup_user_ids
+        )
         
         
         return context

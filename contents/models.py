@@ -17,8 +17,12 @@ class Content(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(default="")
 
+    class meta:
+        ordering = ['created_at',]
+
     def __str__(self) -> str:   # amdin에서 display_list를 설정해주었기 때문에 없어도 된다. 
         return self.text
+    
 
 
 # 이미지를 업로드해주는 함수
@@ -41,4 +45,10 @@ class Image(BaseModel):
     def __str__(self) -> str:
         return "image" + str(self.order)
 
-    
+class FollowRelation(BaseModel):
+
+    follower = models.OneToOneField(User, on_delete=models.CASCADE)  # related_name은 User.set_FollowRelation.all -> User.follower.all
+    followee = models.ManyToManyField(User, related_name='followee')
+
+    # def __str__(self) -> str:
+    #     return self.follower

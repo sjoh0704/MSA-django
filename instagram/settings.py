@@ -35,6 +35,14 @@ ALLOWED_HOSTS = ['*',
 
 # Application definition
 
+
+# debug-toolbar 설정하기
+# 1. pip install django-debug-toolbar
+# 2. installed_apps에 추가
+# 3. middleware추가
+# 4. internal ip 추가 - 여기 아이피에서만 툴바가 보인다.
+# 5. Url에도 추가
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +54,7 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'apis',
     'contents',
-
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'instagram.urls'
@@ -142,3 +151,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') # 관리자가 사용하는 파�
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 사용자가 올린 파일
+
+
+INTERNAL_IPS = ['127.0.0.1']

@@ -9,7 +9,7 @@ class ImageInline(admin.TabularInline):
 
 class ContentAdmin(admin.ModelAdmin):
     inlines = [ImageInline] # content에서 Image를 편하게 볼 수 있게 하기 위함
-    list_display = ('user', 'text',)
+    list_display = ('user', 'text','created_at', 'modified_at')
 
 
 admin.site.register(Content, ContentAdmin)

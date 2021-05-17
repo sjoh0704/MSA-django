@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import pymysql
+import os
 pymysql.version_info = (1, 4, 2, 'final', 0)
 pymysql.install_as_MySQLdb()
 
@@ -90,7 +91,7 @@ DATABASES = {
         'PASSWORD': 'dhtmd745',
         'HOST': 'instagram-database.ctxil1e8ebkk.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
-        
+
     }
 }
 
@@ -134,3 +135,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/login/'
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # 관리자가 사용하는 파일
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 사용자가 올린 파일

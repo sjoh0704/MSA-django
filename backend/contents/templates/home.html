@@ -1,0 +1,60 @@
+{%extends 'base.html'%}
+{%block header%}
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<!-- <script>
+    $.ajaxSetup({
+      headers: { "X-CSRFToken": '{{csrf_token}}' }
+    });
+  </script> -->
+{%endblock%}
+{%block contents%}
+<h1>HOME</h1>
+
+{{request.user}}
+
+<div class="row">
+    <div class="col-12">
+        {% comment %} {%if request.user == "AnonymousUser" %} {% endcomment %}
+        <button class="btn btn-info"><a href="{% url 'login'%}">로그인 하러가기</a></button>
+        <button class="btn btn-info"><a href="{% url 'register'%}">회원가입 하러가기</a></button>
+        {% comment %} {%endif%} {% endcomment %}
+        <button class="btn btn-info" id="logout">로그아웃</button>
+        
+    </div>
+</div>
+
+{{contents}}
+<div class="post">
+    <div class="user-block">
+        {%for content in contents%}
+            {%for image in content.image_set.all%}
+            <img class="img-circle img-bordered-sm" src="{{image.image.url}}" alt="User Image">
+            {%endfor%}
+            <br>
+            <br>
+            <span class="username">
+                <a href="#">{{content.user.username}}</a>
+                <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+            </span>
+        <span class="description">Posted 5 Photos - 5 days ago</span>
+        <p>{{content.text}}</p>
+        {%endfor%}
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        $("#logout").click(function(){
+            $.get('apis/v1/users/logout', {}, function(){
+                location.reload();
+            });
+        });
+    });
+</script>
+
+
+
+{%endblock%}

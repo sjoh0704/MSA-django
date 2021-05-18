@@ -36,7 +36,7 @@ src="https://code.jquery.com/jquery-3.4.1.min.js">
 <script>
     $(document).ready(function(){
         $("#login").click(function(){
-            $.post('/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
+            $.post('http://localhost:7000/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
                 alert("로그인 성공")
                 // location.reload();
                 $(location).attr('href', "");

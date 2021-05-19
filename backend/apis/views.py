@@ -44,8 +44,8 @@ class UserCreateView(BaseView):
             user = User.objects.create_user(username, email, password)
         except IntegrityError:
             return self.response(message="존재하는 아이디입니다.", status=400)
-        
-        return self.response({"user.id": user}, status=200)
+        print(user)
+        return self.response(status=200)
 
 class UserLoginView(BaseView):
     @method_decorator(csrf_exempt)

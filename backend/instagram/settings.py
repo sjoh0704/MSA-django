@@ -159,8 +159,8 @@ INTERNAL_IPS = ['127.0.0.1']
 
 CORS_ORIGIN_WHITELIST = [
     # 허용할 프론트엔드 도메인 추가 EX:
-    'http://localhost:8000',
-    'https://localhost:8000',
-    'http://127.0.0.1:8000',
+    'http://localhost:7000',
+    'https://localhost:7000',
+    'http://127.0.0.1:7000',
 ]
 

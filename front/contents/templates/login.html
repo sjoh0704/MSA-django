@@ -34,12 +34,15 @@ src="https://code.jquery.com/jquery-3.4.1.min.js">
 
 
 <script>
+
     $(document).ready(function(){
         $("#login").click(function(){
-            $.post('http://localhost:7000/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
+            $.post('http://localhost:8000/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
+                $(location).attr('href','http://localhost:7000');
                 alert("로그인 성공")
+                // location.href = 'contents/home.html'
+                
                 // location.reload();
-                $(location).attr('href', "");
                 
             }).fail(function(data){
             alert(data.responseJSON.message);

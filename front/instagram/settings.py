@@ -13,8 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import pymysql
 import os
-pymysql.version_info = (1, 4, 2, 'final', 0)
-pymysql.install_as_MySQLdb()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,9 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 INSTALLED_APPS += [
-    'apis',
     'contents',
-    'debug_toolbar',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -65,7 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'instagram.urls'
@@ -94,13 +92,8 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
-        'USER': 'admin',
-        'PASSWORD': 'dhtmd745',
-        'HOST': 'instagram-database.ctxil1e8ebkk.ap-northeast-2.rds.amazonaws.com',
-        'PORT': '3306',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -153,4 +146,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 사용자가 올린 파일
 
 
-# INTERNAL_IPS = ['127.0.0.1']
+INTERNAL_IPS = ['127.0.0.1']
+
+# CORS_ORIGIN_WHITELIST = [
+#     # 허용할 프론트엔드 도메인 추가 EX:
+#     'http://localhost:8000',
+#     'https://localhost:8000',
+#     'http://127.0.0.1:8000',
+# ]
+
+
+client_url = 'http://localhost:7000'
+server_url = 'http://localhost:8000'

@@ -37,18 +37,3 @@ class Image(BaseModel):
     image = models.ImageField(upload_to = image_upload_to)
     order = models.SmallIntegerField()  #게시물 마다 있는 사진들의 순서를 결정하기 위해 있는 데이터
 
-    # 해당 필드가 테이블에서 Unique함을 표시한다. 해당 컬럼에 대해 Unique Index를 생성한다.
-    class Meta:
-        unique_together = ['content', 'order']
-        ordering = ['order']  # -를 두면 내림차순 
-
-    def __str__(self) -> str:
-        return "image" + str(self.order)
-
-class FollowRelation(BaseModel):
-
-    follower = models.OneToOneField(User, on_delete=models.CASCADE)  # related_name은 User.set_FollowRelation.all -> User.follower.all
-    followee = models.ManyToManyField(User, related_name='followee')
-
-    # def __str__(self) -> str:
-    #     return self.follower

@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'eiq$#vt5^c1r^jp#u2anoip&$fw#mot@9c#&q$agmqllnc7%c$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*',
 ]
@@ -59,6 +59,7 @@ INSTALLED_APPS += [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,7 +68,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'instagram.urls'
@@ -157,10 +158,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # 사용자가 올린 파일
 
 INTERNAL_IPS = ['127.0.0.1']
 
-CORS_ORIGIN_WHITELIST = [
-    # 허용할 프론트엔드 도메인 추가 EX:
-    'http://localhost:8000',
-    'https://localhost:8000',
-    'http://127.0.0.1:8000',
-]
+CORS_ORIGIN_ALLOW_ALL = True
 

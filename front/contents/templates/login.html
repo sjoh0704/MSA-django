@@ -37,8 +37,8 @@ src="https://code.jquery.com/jquery-3.4.1.min.js">
 
     $(document).ready(function(){
         $("#login").click(function(){
-            $.post('http://ingress-nginx-controller.ingress-nginx.svc/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
-                $(location).attr('href','http://localhost:7000');
+            $.post('http://localhost:31000/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
+                $(location).attr('href','http://localhost:31000/');
                 alert("로그인 성공")
                 // location.href = 'contents/home.html'
                 

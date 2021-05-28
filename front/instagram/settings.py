@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'eiq$#vt5^c1r^jp#u2anoip&$fw#mot@9c#&q$agmqllnc7%c$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*',
 ]
@@ -155,6 +155,3 @@ INTERNAL_IPS = ['127.0.0.1']
 #     'http://127.0.0.1:8000',
 # ]
 
-
-client_url = 'http://localhost:7000'
-server_url = 'http://localhost:8000'

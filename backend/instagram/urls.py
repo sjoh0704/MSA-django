@@ -18,11 +18,13 @@ from . import settings
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
-
+from contents.views import health
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('apis/', include('apis.urls')),
     path('', include('contents.urls')),
+    path('health/', health)
 ]
 
 

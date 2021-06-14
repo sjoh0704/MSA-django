@@ -4,6 +4,12 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
 from .models import Content, FollowRelation
+from django.http.response import HttpResponse
+
+
+
+def health(request):
+    return HttpResponse('OK')
 
 @method_decorator(login_required, name='dispatch')
 class HomeView(TemplateView):

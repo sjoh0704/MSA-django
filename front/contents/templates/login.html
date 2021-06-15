@@ -37,7 +37,7 @@ src="https://code.jquery.com/jquery-3.4.1.min.js">
 
     $(document).ready(function(){
         $("#login").click(function(){
-            $.post('http://webservice/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
+            $.post('http://34.64.201.102/apis/v1/users/login', {'username': $(username).val(), 'password': $(password).val()}, function(){
                 $(location).attr('href','http://localhost:8000/');
                 alert("로그인 성공")
                 // location.href = 'contents/home.html'

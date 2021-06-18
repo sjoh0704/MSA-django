@@ -4,7 +4,8 @@ pipeline {
     stages{
         stage("start"){
             steps {
-                echo "start!!"
+                cd ~
+                git clone https://gitlab.com/sjoh0704/MSA-django.git
             }
         }
         stage("stop"){

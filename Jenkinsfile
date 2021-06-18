@@ -7,6 +7,11 @@ pipeline {
                 echo "start!!"
             }
         }
+        stage("stop"){
+            steps {
+                echo "start!!"
+            }
+        }
     
     stage("build"){
             steps {

@@ -6,7 +6,7 @@ pipeline {
             steps {
                 git 
                 git credentialsId: 'gitlab',
-                    url: 'https://gitlab.com/sjoh0704/MSA-django.git'
+                    url: 'https://github.com/sjoh0704/MSA-django.git'
             }
         }
         stage("stop"){

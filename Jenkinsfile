@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     stages{
-        stage("start"){
+        stage("clone"){
             steps {
-                cd ~
-                git clone https://gitlab.com/sjoh0704/MSA-django.git
+                git "https://gitlab.com/sjoh0704/MSA-django.git"
             }
         }
         stage("stop"){

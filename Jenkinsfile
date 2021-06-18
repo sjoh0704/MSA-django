@@ -4,7 +4,9 @@ pipeline {
     stages{
         stage("clone"){
             steps {
-                git "https://gitlab.com/sjoh0704/MSA-django.git"
+                git 
+                git credentialsId: 'gitlab',
+                    url: 'https://gitlab.com/sjoh0704/MSA-django.git'
             }
         }
         stage("stop"){

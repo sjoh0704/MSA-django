@@ -4,6 +4,7 @@ pipeline {
     stages{
         stage("clone"){
             steps {
+                echo "clone start!!!!!!!!"
                 sh 'git clone https://github.com/sjoh0704/MSA-django.git'
             }
         }

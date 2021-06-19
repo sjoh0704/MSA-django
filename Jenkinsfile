@@ -13,7 +13,7 @@ node {
             echo "building!!!!"
 
             sh 'docker build -t testimage .'
-            sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/testimage:$BUILD_NUMBER'
+            sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:$BUILD_NUMBER'
             
     }
 
@@ -24,7 +24,7 @@ node {
       
         echo "pushing!!"
         sh 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com'
-        sh 'docker push 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/testimage:$BUILD_NUMBER'
+        sh 'docker push 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:$BUILD_NUMBER'
  
     }
 

@@ -13,7 +13,7 @@ pipeline {
         stage("image build"){
             steps {
                 echo "building!!!!"
-                sh 'docker build -t textimage MSA-django/front/.'
+                sh 'docker build -t testimage MSA-django/front/.'
                 sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest'
             }
         }

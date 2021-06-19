@@ -5,18 +5,14 @@ pipeline {
         stage("clone"){
             steps {
                 echo "clone start!!!!!!!!"
-                sh 'rm -rf MSA-django || true'
                 checkout scm
-                sh 'pwd'
-                /*
-                * sh 'git clone https://github.com/sjoh0704/MSA-django.git'
-                */
             }
         }
         stage("image build"){
             steps {
                 echo "building!!!!"
-                sh 'docker build -t testimage MSA-django/front/.'
+                sh 'cd front'
+                sh 'docker build -t testimage .'
                 sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest'
             }
         }

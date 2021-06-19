@@ -1,8 +1,8 @@
 node {
 
     environment {
-        env.IMAGE_NAME = 'test'
-
+        IMAGE_NAME = 'test'
+        env.ss = 'fff'
     }
 
 
@@ -10,13 +10,13 @@ node {
   
         echo "clone start!!!!!!!!"
         checkout scm
-   
+        echo 'printenv'
     }
     dir('front'){
         stage("image build"){
             
             echo "building!!!!"
-
+            echo 'printenv'
             sh 'docker build -t ${env.IMAGE_NAME} .'
             sh 'docker tag ${IMAGE_NAME}:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/${IMAGE_NAME}:$BUILD_NUMBER'
             

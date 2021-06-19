@@ -1,7 +1,7 @@
 node {
 
     environment {
-        IMAGE_NAME = 'test'
+        env.IMAGE_NAME = 'test'
 
     }
 

@@ -1,3 +1,4 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.views.generic import TemplateView
 
@@ -11,4 +12,7 @@ class LoginView(TemplateView):
 
 class RegisterView(TemplateView):
     template_name = 'register.html'
+
+def health(request):
+    return HttpResponse('OK')
 

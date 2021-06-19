@@ -14,6 +14,8 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["python3", "manage.py", "runserver", "0:8000"]
+ENTRYPOINT ["python3", "manage.py", "runserver"]
+
+CMD ["0:8000"]
 
 EXPOSE 8000

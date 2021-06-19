@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.urls import path,include
-
+from contents import views
 urlpatterns = [
+    path('health/', views.health),
     path('', include('contents.urls')),
 ]

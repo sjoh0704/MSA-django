@@ -7,6 +7,7 @@ pipeline {
                 echo "clone start!!!!!!!!"
                 sh 'rm -rf MSA-django || true'
                 checkout scm
+                sh 'pwd'
                 /*
                 * sh 'git clone https://github.com/sjoh0704/MSA-django.git'
                 */

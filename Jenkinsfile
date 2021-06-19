@@ -14,7 +14,7 @@ node {
 
             sh 'docker build -t testimage .'
             sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:$BUILD_NUMBER'
-            /* app = docker.build("752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:$BUILD_NUMBER") */
+            
     }
 
     }
@@ -23,10 +23,9 @@ node {
     stage("image push"){
       
         echo "pushing!!"
-    
-        docker.withRegistry('https://752943197678.dkr.ecr.ap-northeast-2.amazonaws.com', 'hanium0119-aws-crediential')
-
-             
+        sh 'aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com'
+        sh 'docker push 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/testimage:$BUILD_NUMBER'
+ 
     }
 
     stage("deploy"){

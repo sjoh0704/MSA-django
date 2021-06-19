@@ -12,7 +12,7 @@ node {
         echo "clone start!!!!!!!!"
         checkout scm
         sh 'printenv'
-        sh '{$ss}'
+        sh '{$env.ss}'
     }
     dir('front'){
         stage("image build"){

@@ -15,9 +15,10 @@ pipeline {
         }
 
     }
-    dir('front'){
+
         stage("image build"){
             steps{
+            dir('front'){
             echo "building!!!!"
         
             sh 'docker build -t ${IMAGE_NAME} .'

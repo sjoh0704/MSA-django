@@ -23,10 +23,7 @@ pipeline {
                 sh 'rm  ~/.dockercfg || true'
                 sh 'rm ~/.docker/config.json || true'
          
-             docker.withRegistry('https://752943197678.dkr.ecr.ap-northeast-2.amazonaws.com', 'hanium0119-aws-crediential') {
-             /* app.push("${env.BUILD_NUMBER}")
-             app.push("latest") */
-            }
+             docker.withRegistry('https://752943197678.dkr.ecr.ap-northeast-2.amazonaws.com', 'hanium0119-aws-crediential')
 
             }
         }

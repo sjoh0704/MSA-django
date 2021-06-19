@@ -17,7 +17,7 @@ node {
             
             echo "building!!!!"
 
-            sh 'docker build -t ${IMAGE_NAME} .'
+            sh 'docker build -t ${env.IMAGE_NAME} .'
             sh 'docker tag ${IMAGE_NAME}:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/${IMAGE_NAME}:$BUILD_NUMBER'
             
     }

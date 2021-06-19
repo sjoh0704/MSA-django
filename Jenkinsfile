@@ -1,6 +1,7 @@
 node {
 
     environment {
+        env.MY_VAR = 'my-value1'
         IMAGE_NAME = 'test'
         env.ss = 'fff'
     }
@@ -11,6 +12,7 @@ node {
         echo "clone start!!!!!!!!"
         checkout scm
         sh 'printenv'
+        sh '{$ss}'
     }
     dir('front'){
         stage("image build"){

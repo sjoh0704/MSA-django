@@ -5,9 +5,10 @@ pipeline {
         stage("clone"){
             steps {
                 echo "clone start!!!!!!!!"
-                sh 'rm -rf MSA-django || true'
-                sh 'git clone https://github.com/sjoh0704/MSA-django.git'
-                
+                checkout scm
+                /*sh 'rm -rf MSA-django || true'
+                * sh 'git clone https://github.com/sjoh0704/MSA-django.git'
+                */
             }
         }
         stage("image build"){

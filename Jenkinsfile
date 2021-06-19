@@ -7,7 +7,7 @@ node {
   
         echo "clone start!!!!!!!!"
         checkout scm
-
+        echo "dfffff ${IMAGE_NAME}"
     }
     dir('front'){
         stage("image build"){

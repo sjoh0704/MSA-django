@@ -12,9 +12,9 @@ node {
             
             echo "building!!!!"
 
-            /* sh 'docker build -t testimage front/.'
-            sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:latest' */
-            app = docker.build("752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test")
+            sh 'docker build -t testimage front/.'
+            sh 'docker tag testimage:latest 752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:{$BUILD_NUMBER}'
+            /* app = docker.build("752943197678.dkr.ecr.ap-northeast-2.amazonaws.com/test:$BUILD_NUMBER") */
     }
 
     }
@@ -24,10 +24,7 @@ node {
       
         echo "pushing!!"
     
-        docker.withRegistry('https://752943197678.dkr.ecr.ap-northeast-2.amazonaws.com', 'hanium0119-aws-crediential'){
-        app.push("${env.BUILD_NUMBER}")
-        app.push("latest")
-        }
+        docker.withRegistry('https://752943197678.dkr.ecr.ap-northeast-2.amazonaws.com', 'hanium0119-aws-crediential')
 
              
     }
